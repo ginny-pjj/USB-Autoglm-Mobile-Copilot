@@ -20,56 +20,15 @@
 
 ## 系统架构
 
-```mermaid
-flowchart TB
-    subgraph Phone["Android 手机"]
-        App["Mobile App<br/>输入任务 · 展示 Trace"]
-    end
+![系统架构图](assets/architecture-usb.png)
 
-    subgraph PC["Windows 电脑"]
-        Reverse["adb reverse<br/>tcp:8000 → tcp:8000"]
-        API["FastAPI Server<br/>server/main.py"]
-        Agent["Open-AutoGLM<br/>PhoneAgent"]
-    end
+**数据流简述：**
 
-    subgraph Device["Android 手机（ADB 侧）"]
-        Screen["屏幕截图"]
-        Action["点击 / 输入 / 滑动"]
-    end
-
-    VLM["智谱 autoglm-phone<br/>视觉语言模型"]
-
-    App -->|"HTTP 127.0.0.1:8000"| Reverse
-    Reverse --> API
-    API -->|"subprocess"| Agent
-    Agent --> Screen
-    Screen --> VLM
-    VLM --> Agent
-    Agent --> Action
-```
-
-### Agent 执行流程
-
-```mermaid
-sequenceDiagram
-    participant App as Mobile App
-    participant API as FastAPI
-    participant PA as PhoneAgent
-    participant VLM as autoglm-phone
-    participant ADB as USB ADB
-
-    App->>API: POST /tasks
-    API->>PA: 启动 main.py
-    loop 每一步
-        PA->>ADB: 截图
-        ADB-->>PA: 屏幕图像
-        PA->>VLM: 图像 + 任务上下文
-        VLM-->>PA: 动作指令 (Tap/Launch/Type...)
-        PA->>ADB: 执行动作
-    end
-    PA-->>API: 完成 / 日志
-    API-->>App: Trace + 结果
-```
+1. 用户在 App 输入任务，经 `adb reverse` 以 HTTP 发送到本地 FastAPI（`/tasks`）
+2. FastAPI 通过 subprocess 启动 Open-AutoGLM PhoneAgent
+3. Agent 截取手机屏幕，调用智谱 `autoglm-phone` 获取动作决策
+4. 通过 USB ADB 执行点击 / 输入 / 滑动等操作
+5. 截图与页面状态回传 Agent，循环直至任务完成；Trace 与日志回传 App
 
 ---
 
@@ -160,13 +119,13 @@ http://127.0.0.1:8000
 
 ## 演示视频
 
-录屏演示见 [GitHub Releases](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases)。
+本项目包含真实设备任务执行的录屏演示。
 
-上传 Release 后，可将链接改为具体文件地址，例如：
+**[观看 USB 版演示视频](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases/download/usb-demo/USB-demo.mp4)**
 
-```markdown
-[演示视频](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases/download/v1.0-demo/demo_usb.mp4)
-```
+视频包含：后端启动 → USB 连接与 `adb reverse` → App 提交任务 → 手机自动操作 → Agent Trace 与结果。
+
+更多版本演示见 [Releases](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases) · [系列说明](SERIES.md)
 
 ---
 
@@ -186,6 +145,8 @@ http://127.0.0.1:8000
 │       ├── config/
 │       └── model/
 ├── docs/                 # 架构说明、FAQ 等
+├── assets/               # 架构图、App 截图
+│   └── architecture-usb.png
 ├── ADBKeyboard.apk
 └── SERIES.md             # 系列仓库说明
 ```

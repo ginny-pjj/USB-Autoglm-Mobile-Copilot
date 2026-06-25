@@ -1,5 +1,7 @@
 # USB 版系统架构
 
+![系统架构图](../assets/architecture-usb.png)
+
 ## 总体调用链
 
 ```text
