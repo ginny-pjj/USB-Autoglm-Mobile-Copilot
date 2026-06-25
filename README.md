@@ -16,8 +16,6 @@
 
 系列说明见 [SERIES.md](SERIES.md)。
 
-> **建议审阅顺序：** 本 README（30 秒）→ [Release 演示视频](#演示视频)（1 分钟）→ 代码目录 `server/`、`mobile-app/`（3 分钟）
-
 ---
 
 ## 相比官方 Open-AutoGLM，本项目新增

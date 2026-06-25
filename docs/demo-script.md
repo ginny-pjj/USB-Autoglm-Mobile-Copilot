@@ -43,25 +43,6 @@ demo/demo_usb_v1.mp4
 6. 展示真实手机被自动操作。
 7. 展示 App Trace 和最终结果。
 
-## 4. 答辩讲解顺序
+## 4. 视频说明文字
 
-### 项目一句话
-
-这是项目第一版，用电脑运行后端，通过 USB ADB 控制真实手机，并在手机 App 中查看任务执行过程。
-
-### 架构说明
-
-```text
-App → adb reverse → 本地 FastAPI → Open-AutoGLM PhoneAgent → USB ADB → Android 手机
-```
-
-### 关键亮点
-
-- 先跑通真实手机 Agent 闭环。
-- App 不是只做界面，而是真的能发任务给后端。
-- 后端调用 Open-AutoGLM，不重写 Agent 核心。
-- Trace 能展示 Agent 的观察、思考和动作。
-
-## 5. 视频说明文字
-
-> 本视频展示 AutoGLM Mobile Copilot USB 第一版。Windows 电脑运行 FastAPI 后端，通过 USB ADB 连接真实 Android 手机；手机 App 通过 `adb reverse` 访问本地服务，并在 Real 模式下调用 Open-AutoGLM Phone Agent 完成任务。
+> 本视频展示 AutoGLM Mobile Copilot USB 版。Windows 电脑运行 FastAPI 后端，通过 USB ADB 连接真实 Android 手机；手机 App 通过 `adb reverse` 访问本地服务，并在 Real 模式下调用 Open-AutoGLM Phone Agent 完成任务。

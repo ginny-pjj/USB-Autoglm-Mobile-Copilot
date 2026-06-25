@@ -82,16 +82,16 @@ mobile-app/App.tsx          # Android 控制端：发任务、看 Trace
 
 ---
 
-## 4. 三层调用关系（给面试官看）
+## 4. 三层调用关系
 
 ```text
 ┌─────────────────────────────────────────┐
-│  mobile-app/          你做的产品层       │
+│  mobile-app/          产品层             │
 │  发任务、看 Trace                        │
 └──────────────────┬──────────────────────┘
                    │ HTTP
 ┌──────────────────▼──────────────────────┐
-│  server/main.py       你做的 API 封装层   │
+│  server/main.py       API 封装层          │
 │  Mock/Real、subprocess 调 Agent          │
 └──────────────────┬──────────────────────┘
                    │ subprocess
@@ -126,10 +126,4 @@ mobile-app/App.tsx          # Android 控制端：发任务、看 Trace
 
 运行 `python main.py --list-apps` 可查看支持的应用列表。
 
----
-
-## 6. 答辩一句话
-
-> 我没有重写 phone_agent 内核，而是在官方 Open-AutoGLM 结构之上加了 server 和 mobile-app，把 CLI Agent 产品化成可演示、可追踪的 Mobile Copilot；Cloud 版只在 adb、screenshot、handler 等处做了远程场景补丁。
-
-系列总览 → [SERIES.md](../SERIES.md)（USB 主仓库）
+系列总览 → [SERIES.md](../SERIES.md)
