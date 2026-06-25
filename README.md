@@ -165,14 +165,11 @@ mobile-app\build_apk.bat
 └── SERIES.md             # 系列仓库说明
 ```
 
-`phone_agent/` 目录说明见 [docs/phone_agent-目录对照.md](docs/phone_agent-目录对照.md)。
-
 ---
 
 ## 文档
 
 - [架构与实现逻辑](docs/architecture.md)
-- [phone_agent 目录对照](docs/phone_agent-目录对照.md)
 - [常见问题](docs/faq.md)
 
 ---

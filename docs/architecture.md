@@ -55,18 +55,3 @@ POST /tasks { task, mode: real }
 | 手机 USB 调试 | 允许电脑通过 ADB 控制手机 |
 | ADB / platform-tools | 执行 `adb devices`、`adb reverse`、点击输入等操作 |
 | 智谱 API Key | 模型推理必需 |
-
-## 5. 和云端版的区别
-
-| 项目 | USB v1 |
-| --- | --- |
-| 后端位置 | 本地电脑 |
-| 手机连接 | USB ADB |
-| App 地址 | `http://127.0.0.1:8000` |
-| 是否需要云服务器 | 不需要 |
-| 是否需要 Tailscale | 不需要 |
-| 是否需要电脑一直开 | 需要 |
-
-## 6. 展示时可讲的一句话
-
-> USB v1 是项目的第一阶段：我先在本地电脑上跑通 App、FastAPI、Open-AutoGLM 和 USB ADB 的真实手机控制闭环，再把这个链路升级成云端远程版。
