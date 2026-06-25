@@ -1,6 +1,6 @@
-# USB v1 FAQ
+# USB 版 FAQ
 
-## 1. 这个项目和云端版有什么区别？
+## 1. 和 WiFi / Cloud 版有什么区别？
 
 USB v1 的后端运行在本地 Windows 电脑上，手机通过 USB ADB 连接电脑。云端版的后端运行在云服务器上，手机通过 Tailscale / 无线 ADB 连接云端。
 
