@@ -139,8 +139,6 @@ mobile-app\build_apk.bat
 
 视频包含：后端启动 → USB 连接与 `adb reverse` → App 提交任务 → 手机自动操作 → Agent Trace 与结果。
 
-> 本项目需配合本地后端与 ADB 环境运行，**无法仅通过单独安装 App 演示**。了解效果请优先观看演示视频；完整复现见上文「快速开始」。
-
 更多版本：[Releases](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases) · [系列说明](SERIES.md)
 
 ---
