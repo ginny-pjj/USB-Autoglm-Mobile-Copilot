@@ -26,7 +26,7 @@
 | --- | --- |
 | USB | [USB-demo.mp4](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases/download/usb-demo/USB-demo.mp4) |
 | WiFi | [WIFI-demo.mp4](https://github.com/ginny-pjj/WIFI-Autoglm-Mobile-Copilot/releases/download/demo-wifi/WIFI-demo.mp4) |
-| Cloud | [Releases](https://github.com/ginny-pjj/CLOUD-Autoglm-Mobile-Copilot/releases) |
+| Cloud | [CLOUD-demo.mp4](https://github.com/ginny-pjj/CLOUD-Autoglm-Mobile-Copilot/releases/download/demo-cloud/CLOUD-demo.mp4) |
 
 ## 文档
 
