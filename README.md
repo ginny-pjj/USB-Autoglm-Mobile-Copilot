@@ -16,6 +16,22 @@
 
 系列说明见 [SERIES.md](SERIES.md)。
 
+> **建议审阅顺序：** 本 README（30 秒）→ [Release 演示视频 / APK](#演示视频与安装)（1 分钟）→ 代码目录 `server/`、`mobile-app/`（3 分钟）
+
+---
+
+## 相比官方 Open-AutoGLM，本项目新增
+
+官方 [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) 提供命令行 Phone Agent（`python main.py`）。**本项目未重写 Agent 内核**，在 `Open-AutoGLM/phone_agent/` 之上增加：
+
+| 新增模块 | 说明 |
+| --- | --- |
+| **mobile-app/** | Android 控制端 App（自然语言发任务、看 Trace） |
+| **server/** | FastAPI 任务服务（Mock / Real、日志清洗为 Trace） |
+| **真机执行** | USB ADB 控制真实 Android 手机 |
+| **adb reverse** | App 填 `127.0.0.1:8000` 即可连电脑后端 |
+| **多部署方式** | 本仓库为 USB 版；[WiFi](https://github.com/ginny-pjj/WIFI-Autoglm-Mobile-Copilot) / [Cloud](https://github.com/ginny-pjj/CLOUD-Autoglm-Mobile-Copilot) 为扩展 |
+
 ---
 
 ## 系统架构
@@ -117,15 +133,36 @@ http://127.0.0.1:8000
 
 ---
 
-## 演示视频
+## 演示视频与安装
 
-本项目包含真实设备任务执行的录屏演示。
+### 演示视频
 
 **[观看 USB 版演示视频](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases/download/usb-demo/USB-demo.mp4)**
 
 视频包含：后端启动 → USB 连接与 `adb reverse` → App 提交任务 → 手机自动操作 → Agent Trace 与结果。
 
-更多版本演示见 [Releases](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases) · [系列说明](SERIES.md)
+### 安装 App（APK 是什么？）
+
+**APK** 是 Android 手机的安装包（类似 Windows 的 `.exe`）。下载后传到手机安装，即可使用 **AutoGLM Mobile Copilot** 控制端。
+
+| 文件 | 说明 |
+| --- | --- |
+| **AutoGLM-Mobile-Copilot.apk** | 本项目 Android App（发任务、看 Trace） |
+| **ADBKeyboard.apk** | 根目录自带，用于中文输入（建议一并安装） |
+
+**下载 App：** 见 [GitHub Releases](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases) 中的 `AutoGLM-Mobile-Copilot.apk`（与演示视频同页）。
+
+安装后打开 App，服务器地址填 `http://127.0.0.1:8000`，先执行 `adb reverse tcp:8000 tcp:8000`。
+
+本地自行打包：
+
+```cmd
+mobile-app\build_apk.bat
+```
+
+产物默认在 `dist/AutoGLM-Mobile-Copilot.apk`。
+
+更多版本：[Releases](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases) · [系列说明](SERIES.md)
 
 ---
 
@@ -152,18 +189,6 @@ http://127.0.0.1:8000
 ```
 
 `phone_agent/` 目录说明见 [docs/phone_agent-目录对照.md](docs/phone_agent-目录对照.md)。
-
----
-
-## 基于 Open-AutoGLM 的扩展
-
-官方 [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) 提供 CLI 形式的 Phone Agent。本项目在其基础上增加：
-
-- **server/**：HTTP API 封装，支持 Mock/Real 与 Trace 清洗
-- **mobile-app/**：Android 控制端
-- **adb reverse 本地访问方案**：简化 USB 场景下的 App 联调
-
-Agent 核心逻辑未重写，仍使用 `Open-AutoGLM/phone_agent/`。
 
 ---
 
