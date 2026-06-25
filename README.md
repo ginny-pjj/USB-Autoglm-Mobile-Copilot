@@ -16,7 +16,7 @@
 
 系列说明见 [SERIES.md](SERIES.md)。
 
-> **建议审阅顺序：** 本 README（30 秒）→ [Release 演示视频 / APK](#演示视频与安装)（1 分钟）→ 代码目录 `server/`、`mobile-app/`（3 分钟）
+> **建议审阅顺序：** 本 README（30 秒）→ [Release 演示视频](#演示视频)（1 分钟）→ 代码目录 `server/`、`mobile-app/`（3 分钟）
 
 ---
 
@@ -111,15 +111,15 @@ adb devices
 adb reverse tcp:8000 tcp:8000
 ```
 
-### 4. 配置 App
+### 4. 安装 App
 
-服务器地址：
+App 需本地自行打包（需先完成上述后端与 ADB 配置）：
 
-```text
-http://127.0.0.1:8000
+```cmd
+mobile-app\build_apk.bat
 ```
 
-连接测试通过后，选择 **Real** 模式执行任务。
+安装生成的 APK 后，服务器地址填 `http://127.0.0.1:8000`，连接测试通过，选择 **Real** 模式执行任务。
 
 ---
 
@@ -133,34 +133,13 @@ http://127.0.0.1:8000
 
 ---
 
-## 演示视频与安装
-
-### 演示视频
+## 演示视频
 
 **[观看 USB 版演示视频](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases/download/usb-demo/USB-demo.mp4)**
 
 视频包含：后端启动 → USB 连接与 `adb reverse` → App 提交任务 → 手机自动操作 → Agent Trace 与结果。
 
-### 安装 App（APK 是什么？）
-
-**APK** 是 Android 手机的安装包（类似 Windows 的 `.exe`）。下载后传到手机安装，即可使用 **AutoGLM Mobile Copilot** 控制端。
-
-| 文件 | 说明 |
-| --- | --- |
-| **AutoGLM-Mobile-Copilot.apk** | 本项目 Android App（发任务、看 Trace） |
-| **ADBKeyboard.apk** | 根目录自带，用于中文输入（建议一并安装） |
-
-**下载 App：** 见 [GitHub Releases](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases) 中的 `AutoGLM-Mobile-Copilot.apk`（与演示视频同页）。
-
-安装后打开 App，服务器地址填 `http://127.0.0.1:8000`，先执行 `adb reverse tcp:8000 tcp:8000`。
-
-本地自行打包：
-
-```cmd
-mobile-app\build_apk.bat
-```
-
-产物默认在 `dist/AutoGLM-Mobile-Copilot.apk`。
+> 本项目需配合本地后端与 ADB 环境运行，**无法仅通过单独安装 App 演示**。了解效果请优先观看演示视频；完整复现见上文「快速开始」。
 
 更多版本：[Releases](https://github.com/ginny-pjj/USB-Autoglm-Mobile-Copilot/releases) · [系列说明](SERIES.md)
 
